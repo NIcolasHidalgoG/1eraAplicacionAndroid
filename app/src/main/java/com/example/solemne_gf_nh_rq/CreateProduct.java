@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 
 public class CreateProduct extends AppCompatActivity {
@@ -16,6 +17,11 @@ public class CreateProduct extends AppCompatActivity {
 
     public void back(View view){
         Intent miIntent = new Intent(CreateProduct.this, MainActivity.class);
+        startActivity(miIntent);
+    }
+
+    public void cam(View view){
+        Intent miIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivity(miIntent);
     }
 }
