@@ -7,11 +7,11 @@
     tools:context=".create_category">
 
     <EditText
-        android:id="@+id/product_name2"
+        android:id="@+id/category_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
@@ -38,16 +38,18 @@
         android:scaleX="2"
         android:scaleY="2"
         android:text="Crear categoria"
-        app:layout_constraintStart_toStartOf="@+id/product_name2"
+        app:layout_constraintStart_toStartOf="@+id/category_name"
         app:layout_constraintTop_toBottomOf="@+id/btn_back3" />
 
     <Button
-        android:id="@+id/create3"
+        android:id="@+id/btn_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
         android:layout_marginBottom="148dp"
+        android:onClick="insert"
         android:text="Crear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

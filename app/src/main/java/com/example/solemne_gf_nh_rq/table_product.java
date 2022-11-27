@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -20,15 +21,15 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
+import java.util.ArrayList;
 
 public class table_product extends AppCompatActivity {
-    EditText edtCodigo;
-    TextView view1;
+
     Button btnView;
+    ArrayList<String> listaProductos = new ArrayList<>();
+    ListView lstProducto;
+    ArrayAdapter<String> adaptador;
 
     private RequestQueue rq;
 
@@ -37,14 +38,14 @@ public class table_product extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_product);
-        view1 = findViewById(R.id.view1);
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
+        lstProducto = findViewById(R.id.supplier_table);
+        sleccionarProducto_Click();
 
     }
 
-    public void getInfo(View view) {
-        view1.setText("");
+    public void crearListaProductos(View view){
         String url = "http://10.0.2.2:3000/api/productos";
         JsonArrayRequest requerimiento = new JsonArrayRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONArray>() {
@@ -53,8 +54,8 @@ public class table_product extends AppCompatActivity {
                 for(int f=0; f<response.length(); f++){
                     try {
                         JSONObject objeto = new JSONObject(response.get(f).toString());
-                        view1.append("nombre"+objeto.getString("nombre")+"\n");
-
+                        String nombreProducto = objeto.getString("nombre");
+                        listaProductos.add(nombreProducto);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -67,6 +68,20 @@ public class table_product extends AppCompatActivity {
             }
         });
         rq.add(requerimiento);
+        adaptador = new ArrayAdapter<String>(table_product.this, android.R.layout.simple_expandable_list_item_1, listaProductos);
+        lstProducto.setAdapter(adaptador);
+    }
+
+    private void sleccionarProducto_Click(){
+        lstProducto.setSelection(0);
+        lstProducto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(selectedItem == 0){
+                    Toast.makeText(getApplicationContext(), "ID= "+ String.valueOf(i), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void back(View view){
