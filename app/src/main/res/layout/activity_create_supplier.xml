@@ -7,7 +7,7 @@
     tools:context=".create_supplier">
 
     <EditText
-        android:id="@+id/product_name3"
+        android:id="@+id/supplier_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
@@ -18,12 +18,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <EditText
+        android:id="@+id/supplier_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="Dirección"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/supplier_Tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="176dp"
+        android:ems="10"
+        android:hint="Teléfono"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <Button
-        android:id="@+id/create2"
+        android:id="@+id/supplier_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
         android:layout_marginBottom="148dp"
+        android:onClick="insert"
         android:text="Crear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -37,7 +62,7 @@
         android:scaleX="2"
         android:scaleY="2"
         android:text="Crear proveedor"
-        app:layout_constraintStart_toStartOf="@+id/product_name3"
+        app:layout_constraintStart_toStartOf="@+id/supplier_name"
         app:layout_constraintTop_toBottomOf="@+id/btn_back2" />
 
     <Button
