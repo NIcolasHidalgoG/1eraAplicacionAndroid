@@ -16,16 +16,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void toProduct(View view){
+    public void toCreateProduct(View view){
         Intent miIntent = new Intent(MainActivity.this, CreateProduct.class);
         startActivity(miIntent);
     }
-    public void toCategory(View view){
+    public void toCreateCategory(View view){
         Intent miIntent = new Intent(MainActivity.this, create_category.class);
         startActivity(miIntent);
     }
-    public void toSupplier(View view){
+    public void toCreateSupplier(View view){
         Intent miIntent = new Intent(MainActivity.this, create_supplier.class);
+        startActivity(miIntent);
+    }
+    public void toTableProduct(View view){
+        Intent miIntent = new Intent(MainActivity.this, table_product.class);
+        startActivity(miIntent);
+    }
+    public void toTableCategory(View view){
+        Intent miIntent = new Intent(MainActivity.this, table_category.class);
+        startActivity(miIntent);
+    }
+    public void toTableSupplier(View view){
+        Intent miIntent = new Intent(MainActivity.this, table_supplier.class);
         startActivity(miIntent);
     }
 }
