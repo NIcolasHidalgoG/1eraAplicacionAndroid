@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -25,8 +26,8 @@ import java.util.ArrayList;
 public class table_supplier extends AppCompatActivity {
 
     Button btnView;
-    ArrayList<String> listaProductos = new ArrayList<>();
-    ListView lstProducto;
+    ArrayList<String> listaProveedor = new ArrayList<>();
+    ListView lstProveedor;
     ArrayAdapter<String> adaptador;
 
     private RequestQueue rq;
@@ -38,11 +39,11 @@ public class table_supplier extends AppCompatActivity {
         setContentView(R.layout.activity_table_supplier);
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
-        lstProducto = findViewById(R.id.supplier_table);
-
+        lstProveedor = findViewById(R.id.supplier_table);
+        crearListaProveedores();
     }
 
-    public void crearListaProveedores(View view){
+    public void crearListaProveedores(){
         String url = "http://10.0.2.2:3000/api/proveedores";
         JsonArrayRequest requerimiento = new JsonArrayRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONArray>() {
@@ -51,8 +52,9 @@ public class table_supplier extends AppCompatActivity {
                 for(int f=0; f<response.length(); f++){
                     try {
                         JSONObject objeto = new JSONObject(response.get(f).toString());
-                        String nombreProducto = objeto.getString("nombre");
-                        listaProductos.add(nombreProducto);
+                        String nombreProveedor = objeto.getString("nombre");
+                        listaProveedor.add(nombreProveedor);
+                        seleccionarProveedor_Click(f);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -65,8 +67,21 @@ public class table_supplier extends AppCompatActivity {
             }
         });
         rq.add(requerimiento);
-        adaptador = new ArrayAdapter<String>(table_supplier.this, android.R.layout.simple_expandable_list_item_1, listaProductos);
-        lstProducto.setAdapter(adaptador);
+        adaptador = new ArrayAdapter<String>(table_supplier.this, android.R.layout.simple_expandable_list_item_1, listaProveedor);
+        lstProveedor.setAdapter(adaptador);
+    }
+
+    private void seleccionarProveedor_Click(Integer id){
+        lstProveedor.setSelection(0);
+        lstProveedor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent miIntent = new Intent(table_supplier.this, detail_supplier.class);
+                miIntent.putExtra("idItem", i+1);
+                startActivity(miIntent);
+                //Toast.makeText(getApplicationContext(), "ID= "+ String.valueOf(i+1), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void back(View view){
