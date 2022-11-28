@@ -39,7 +39,7 @@ public class table_category extends AppCompatActivity {
         setContentView(R.layout.activity_table_category);
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
-        lstProducto = findViewById(R.id.supplier_table);
+        lstProducto = findViewById(R.id.supplier_table2);
         crearListaCategoria();
 
     }

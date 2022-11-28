@@ -24,7 +24,7 @@
         android:text="Mostrar" />
 
     <ListView
-        android:id="@+id/supplier_table"
+        android:id="@+id/supplier_table2"
         android:layout_width="match_parent"
         android:layout_height="405dp"
         android:layout_alignParentBottom="true"

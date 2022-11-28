@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +28,7 @@ public class detail_supplier extends AppCompatActivity {
     TextView textView7;
     Bundle bundle;
     Integer id;
-    Button delete_product;
+    Button delete_supplier;
 
     private RequestQueue rq;
 
@@ -35,7 +37,7 @@ public class detail_supplier extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_supplier);
         textView7 = findViewById(R.id.textView7);
-        delete_product = findViewById(R.id.delete_product);
+        delete_supplier = findViewById(R.id.delete_supplier);
 
         bundle = getIntent().getExtras();
         id = bundle.getInt("idItem");
@@ -46,8 +48,8 @@ public class detail_supplier extends AppCompatActivity {
 
     public void detalleProveedor() {
         textView7.setText("");
-        String idPro = id.toString();
-        String url = "http://10.0.2.2:3000/api/proveedor/" + idPro;
+        String idProv = id.toString();
+        String url = "http://10.0.2.2:3000/api/proveedores/" + idProv;
         JsonArrayRequest requerimiento = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -70,9 +72,9 @@ public class detail_supplier extends AppCompatActivity {
         rq.add(requerimiento);
     }
 
-    public void eliminarProducto(View view){
-        String idPro = id.toString();
-        String url = "http://10.0.2.2:3000/api/proveedor/" + idPro;
+    public void eliminarProveedor(View view){
+        String idProv = id.toString();
+        String url = "http://10.0.2.2:3000/api/proveedores/" + idProv;
         JSONObject parametros = new JSONObject();
         try {
             parametros.put("id_proveedor", id);

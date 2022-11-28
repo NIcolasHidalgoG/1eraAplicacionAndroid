@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,7 +40,7 @@ public class table_supplier extends AppCompatActivity {
         setContentView(R.layout.activity_table_supplier);
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
-        lstProveedor = findViewById(R.id.supplier_table);
+        lstProveedor = findViewById(R.id.supplier_table2);
         crearListaProveedores();
     }
 
@@ -79,7 +80,7 @@ public class table_supplier extends AppCompatActivity {
                 Intent miIntent = new Intent(table_supplier.this, detail_supplier.class);
                 miIntent.putExtra("idItem", i+1);
                 startActivity(miIntent);
-                //Toast.makeText(getApplicationContext(), "ID= "+ String.valueOf(i+1), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "ID= "+ String.valueOf(i+1), Toast.LENGTH_SHORT).show();
             }
         });
     }
