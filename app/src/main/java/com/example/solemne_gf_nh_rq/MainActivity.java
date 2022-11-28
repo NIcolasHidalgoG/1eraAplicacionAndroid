@@ -28,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
         Intent miIntent = new Intent(MainActivity.this, create_supplier.class);
         startActivity(miIntent);
     }
+    public void toCreateSeller(View view){
+        Intent miIntent = new Intent(MainActivity.this, create_seller.class);
+        startActivity(miIntent);
+    }
+    public void toCreateTrolley(View view){
+        Intent miIntent = new Intent(MainActivity.this, create_trolley.class);
+        startActivity(miIntent);
+    }
     public void toTableProduct(View view){
         Intent miIntent = new Intent(MainActivity.this, table_product.class);
         startActivity(miIntent);
@@ -38,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void toTableSupplier(View view){
         Intent miIntent = new Intent(MainActivity.this, table_supplier.class);
+        startActivity(miIntent);
+    }
+    public void toTableSeller(View view){
+        Intent miIntent = new Intent(MainActivity.this, table_seller.class);
+        startActivity(miIntent);
+    }
+    public void toTableTrolley(View view){
+        Intent miIntent = new Intent(MainActivity.this, table_trolley.class);
         startActivity(miIntent);
     }
 }
