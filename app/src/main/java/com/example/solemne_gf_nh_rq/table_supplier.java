@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,19 +27,19 @@ public class table_supplier extends AppCompatActivity {
 
     Button btnView;
     ArrayList<String> listaProveedor = new ArrayList<>();
-    ListView lstProveedor;
+    ListView lstProducto;
     ArrayAdapter<String> adaptador;
 
     private RequestQueue rq;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_supplier);
+
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
-        lstProveedor = findViewById(R.id.trolley_table);
+        lstProducto = findViewById(R.id.table);
         crearListaProveedores();
     }
 
@@ -55,7 +54,7 @@ public class table_supplier extends AppCompatActivity {
                         JSONObject objeto = new JSONObject(response.get(f).toString());
                         String nombreProveedor = objeto.getString("nombre");
                         listaProveedor.add(nombreProveedor);
-                        seleccionarProveedor_Click(f);
+                        sleccionarProveedor_Click(f);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -69,18 +68,18 @@ public class table_supplier extends AppCompatActivity {
         });
         rq.add(requerimiento);
         adaptador = new ArrayAdapter<String>(table_supplier.this, android.R.layout.simple_expandable_list_item_1, listaProveedor);
-        lstProveedor.setAdapter(adaptador);
+        lstProducto.setAdapter(adaptador);
     }
 
-    private void seleccionarProveedor_Click(Integer id){
-        lstProveedor.setSelection(0);
-        lstProveedor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void sleccionarProveedor_Click(Integer id){
+        lstProducto.setSelection(0);
+        lstProducto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent miIntent = new Intent(table_supplier.this, detail_supplier.class);
                 miIntent.putExtra("idItem", i+1);
                 startActivity(miIntent);
-                Toast.makeText(getApplicationContext(), "ID= "+ String.valueOf(i+1), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "ID= "+ String.valueOf(i+1), Toast.LENGTH_SHORT).show();
             }
         });
     }

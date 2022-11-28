@@ -7,7 +7,7 @@
     tools:context=".table_client">
 
     <ListView
-        android:id="@+id/trolley_table"
+        android:id="@+id/table"
         android:layout_width="match_parent"
         android:layout_height="405dp"
         android:layout_alignParentBottom="true"

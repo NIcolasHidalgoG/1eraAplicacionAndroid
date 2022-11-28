@@ -14,7 +14,7 @@
         android:text="Volver Atras" />
 
     <ListView
-        android:id="@+id/trolley_table"
+        android:id="@+id/table"
         android:layout_width="match_parent"
         android:layout_height="485dp"
         android:layout_alignParentBottom="true"
