@@ -21,10 +21,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".detail_seller"
+            android:name=".table_client"
+            android:exported="false" />
+        <activity
+            android:name=".create_client"
+            android:exported="false" />
+        <activity
+            android:name=".detail_trolley"
             android:exported="false" />
         <activity
             android:name=".table_trolley"
+            android:exported="false" />
+        <activity
+            android:name=".detail_seller"
             android:exported="false" />
         <activity
             android:name=".table_seller"

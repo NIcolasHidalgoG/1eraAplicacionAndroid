@@ -40,7 +40,7 @@ public class table_supplier extends AppCompatActivity {
         setContentView(R.layout.activity_table_supplier);
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
-        lstProveedor = findViewById(R.id.seller_table);
+        lstProveedor = findViewById(R.id.trolley_table);
         crearListaProveedores();
     }
 

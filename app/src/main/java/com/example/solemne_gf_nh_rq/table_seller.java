@@ -39,7 +39,7 @@ public class table_seller extends AppCompatActivity {
 
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
-        lstProducto = findViewById(R.id.seller_table);
+        lstProducto = findViewById(R.id.trolley_table);
         crearListaVendedores();
     }
 

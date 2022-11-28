@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         Intent miIntent = new Intent(MainActivity.this, create_trolley.class);
         startActivity(miIntent);
     }
+    public void toCreateClient(View view){
+        Intent miIntent = new Intent(MainActivity.this, create_client.class);
+        startActivity(miIntent);
+    }
     public void toTableProduct(View view){
         Intent miIntent = new Intent(MainActivity.this, table_product.class);
         startActivity(miIntent);
@@ -54,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void toTableTrolley(View view){
         Intent miIntent = new Intent(MainActivity.this, table_trolley.class);
+        startActivity(miIntent);
+    }
+    public void toTableClient(View view){
+        Intent miIntent = new Intent(MainActivity.this, table_client.class);
         startActivity(miIntent);
     }
 }
