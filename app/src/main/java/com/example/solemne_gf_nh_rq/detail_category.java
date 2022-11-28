@@ -55,7 +55,7 @@ public class detail_category extends AppCompatActivity {
                         if (response.length() == 1){
                             try {
                                 JSONObject objeto = new JSONObject(response.get(0).toString());
-                                textView6.setText(objeto.getString("nombre"));
+                                textView6.setText(objeto.getString("categoria"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -85,7 +85,7 @@ public class detail_category extends AppCompatActivity {
                         try {
                             String resu=response.get("id_categoria").toString();
                             if (resu.equals("1")){
-                                Toast.makeText(detail_category.this, "Se eliminó el producto", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(detail_category.this, "Se eliminó el categoria", Toast.LENGTH_SHORT).show();
 
                             } else
                                 Toast.makeText(detail_category.this, "No existe codigo", Toast.LENGTH_SHORT).show();
