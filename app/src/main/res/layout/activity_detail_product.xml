@@ -36,4 +36,15 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/btn_back7"
         app:layout_constraintTop_toBottomOf="@+id/btn_back7" />
+
+    <Button
+        android:id="@+id/delete_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="eliminarProducto"
+        android:text="Eliminar Producto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
