@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -26,7 +27,7 @@ public class table_category extends AppCompatActivity {
 
 
     Button btnView;
-    ArrayList<String> listaProductos = new ArrayList<>();
+    ArrayList<String> listaCategoria = new ArrayList<>();
     ListView lstProducto;
     ArrayAdapter<String> adaptador;
 
@@ -39,10 +40,11 @@ public class table_category extends AppCompatActivity {
         btnView = findViewById(R.id.btnView);
         rq = Volley.newRequestQueue(this);
         lstProducto = findViewById(R.id.supplier_table);
+        crearListaCategoria();
 
     }
 
-    public void crearListaCategoria(View view){
+    public void crearListaCategoria(){
         String url = "http://10.0.2.2:3000/api/categorias";
         JsonArrayRequest requerimiento = new JsonArrayRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONArray>() {
@@ -51,8 +53,9 @@ public class table_category extends AppCompatActivity {
                 for(int f=0; f<response.length(); f++){
                     try {
                         JSONObject objeto = new JSONObject(response.get(f).toString());
-                        String nombreProducto = objeto.getString("categoria");
-                        listaProductos.add(nombreProducto);
+                        String nombreCategoria = objeto.getString("categoria");
+                        listaCategoria.add(nombreCategoria);
+                        sleccionarCategoria_Click(f);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -65,8 +68,21 @@ public class table_category extends AppCompatActivity {
             }
         });
         rq.add(requerimiento);
-        adaptador = new ArrayAdapter<String>(table_category.this, android.R.layout.simple_expandable_list_item_1, listaProductos);
+        adaptador = new ArrayAdapter<String>(table_category.this, android.R.layout.simple_expandable_list_item_1, listaCategoria);
         lstProducto.setAdapter(adaptador);
+    }
+
+    private void sleccionarCategoria_Click(Integer id){
+        lstProducto.setSelection(0);
+        lstProducto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent miIntent = new Intent(table_category.this, detail_category.class);
+                miIntent.putExtra("idItem", i+1);
+                startActivity(miIntent);
+                //Toast.makeText(getApplicationContext(), "ID= "+ String.valueOf(i+1), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void back(View view){
