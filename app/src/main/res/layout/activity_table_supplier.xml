@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <ListView
-        android:id="@+id/supplier_table2"
+        android:id="@+id/seller_table"
         android:layout_width="match_parent"
         android:layout_height="454dp"
         android:layout_alignParentBottom="true"
